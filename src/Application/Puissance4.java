@@ -1,3 +1,4 @@
+package Application;
 /* TODO Package. */
 import java.util.Scanner;
 
@@ -24,7 +25,7 @@ public class Puissance4 {
 		int i = 0;
 		while (i <= 0) {
 
-			System.out.println("Veuillez saisir le numéro de colonne");
+			System.out.println("Veuillez saisir le numï¿½ro de colonne");
 			Scanner sc = new Scanner(System.in);
 			int numScan = sc.nextInt();
 			int numLigne = grille.placerPion(numScan, joueurCourant);
@@ -47,6 +48,6 @@ public class Puissance4 {
 			/* Tenter de poser. */
 			/* Victoire ? */
 		}
-		System.out.println("Bravo tu as gagné");
+		System.out.println("Bravo tu as gagnï¿½");
 	}
 }
