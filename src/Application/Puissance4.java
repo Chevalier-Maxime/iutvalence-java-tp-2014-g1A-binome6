@@ -16,8 +16,8 @@ public class Puissance4 {
 	/** TODO. */
 	public Grille grille;
 
-	public Puissance4() {
-		this.joueurCourant = Etat.JOUEUR_1;
+	public Puissance4(Etat t) {
+		this.joueurCourant = t;
 		this.grille = new Grille();
 	}
 
