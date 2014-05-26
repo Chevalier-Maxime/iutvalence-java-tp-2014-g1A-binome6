@@ -124,6 +124,8 @@ public class FenetreDAffichage implements Runnable
 	 	
 
 	 	partieBasseMilieu.setLayout(new GridLayout(6,7));
+	 	
+	 	panneauJoueurDroit.transformPanel();
 
 	 	
 	//***************************** Ajout des boutons au gridlayout et  rendre inactif*****************
@@ -166,7 +168,10 @@ public class FenetreDAffichage implements Runnable
 				 
 				 for(int i=b.length-1;0<=i;i--){
 					if(partie1.joueurCourant == Etat.JOUEUR_1){
+					//	panneauJoueurGauche.remetPanel();
+						
 						if(b[i].estColore==false){
+							//panneauJoueurGauche.getBackground().darker();
 							position=b[i].positiony;
 							numLigne=partie1.grille.placerPion(b[i].positiony,partie1.joueurCourant);
 							b[i].setBackground(Color.YELLOW);
@@ -186,12 +191,15 @@ public class FenetreDAffichage implements Runnable
 								}
 							}
 							partie1.joueurCourant = Etat.JOUEUR_2;
+							panneauJoueurGauche.transformPanel();
+							panneauJoueurDroit.remetPanel();
 							break;
 						}	
 				
 					}
 					else  
 						if(partie1.joueurCourant == Etat.JOUEUR_2){
+						//	panneauJoueurGauche.remetPanel();
 						if(b[i].estColore==false){
 							position=b[i].positiony;
 							numLigne=partie1.grille.placerPion(b[i].positiony,partie1.joueurCourant);
@@ -211,7 +219,9 @@ public class FenetreDAffichage implements Runnable
 									fenetre.dispose();	
 								}
 							}
-							partie1.joueurCourant = Etat.JOUEUR_1;					
+							partie1.joueurCourant = Etat.JOUEUR_1;
+							panneauJoueurDroit.transformPanel();
+							panneauJoueurGauche.remetPanel();
 						break;
 						
 						}

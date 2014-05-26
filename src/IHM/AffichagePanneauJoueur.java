@@ -22,15 +22,15 @@ public class AffichagePanneauJoueur extends JPanel
 {
 	
 
-	
+	JPanel p1 =new JPanel();
+	JPanel p2 =new JPanel();
+ 	JPanel p3 =new JPanel();
 	
 	public AffichagePanneauJoueur(String nomjoueur,String couleur){
 		
 
 		this.setLayout(new BorderLayout());
-		JPanel p1 =new JPanel();
-		JPanel p2 =new JPanel();
-	 	JPanel p3 =new JPanel();
+	
 		 	p1.setPreferredSize(new Dimension(200,200));
 		 	p1.setBackground(Color.PINK);
 		 
@@ -43,9 +43,9 @@ public class AffichagePanneauJoueur extends JPanel
 			JLabel labelPion = new JLabel();
 			
 			if(couleur=="rouge"){
-				labelPion.setIcon(new ImageIcon("pion_rouge.png"));				
+				labelPion.setIcon(new ImageIcon("pionRougeTest.png"));				
 			}else{
-				labelPion.setIcon(new ImageIcon("pionjaune.jpg"));		
+				labelPion.setIcon(new ImageIcon("pionjauneTest.png"));		
 			}
 			
 			//label.setPreferredSize(new Dimension(200, 200));
@@ -68,12 +68,12 @@ public class AffichagePanneauJoueur extends JPanel
 		    this.add(p2, BorderLayout.SOUTH);
 		        
 	}
-	/*
+	
 	
 	public void transformPanel(){
-		p1.setBackground(Color.pink.brighter());
-		p2.setBackground(Color.black.brighter());
-		p3.setBackground(Color.blue.brighter());
+		p1.setBackground(Color.pink.darker());
+		p2.setBackground(Color.black.darker());
+		p3.setBackground(Color.blue.darker());
 		
 	}
 
@@ -83,7 +83,7 @@ public class AffichagePanneauJoueur extends JPanel
 		p3.setBackground(Color.blue);
 		
 	}
-	*/
+	
 
 
 }
