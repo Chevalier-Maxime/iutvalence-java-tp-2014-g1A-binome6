@@ -11,7 +11,7 @@ import java.awt.Color;
  * @version TODO
  */
 public enum Etat {
-	VIDE(".",Color.WHITE), JOUEUR_1("O",Color.YELLOW), JOUEUR_2("X",Color.RED);
+	VIDE(".",Color.WHITE), JOUEUR_1("Joueur1",Color.YELLOW), JOUEUR_2("Joueur2",Color.RED);
 
 	private final String representation;
 	private final Color couleur;

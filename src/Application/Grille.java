@@ -13,7 +13,7 @@ public class Grille {
 	/** Le nombre de cases par colonne. */
 	public static final int NOMBRE_DE_COLONNES = 7;
 	
-	private static final Etat joueurParDefaut = Etat.JOUEUR_1;
+	private static final Etat joueurParDefaut = Etat.JOUEUR_2;
 
 	/* TODO Change en cours de partie ? */
 	/** Les cases de la grille. */
@@ -43,17 +43,17 @@ public class Grille {
 		if (colonnePion > Grille.NOMBRE_DE_LIGNES || colonnePion < 0) {
 			return colonnePion;
 		}
-
+		if (this.joueurCourant==Etat.JOUEUR_1)
+			this.joueurCourant=Etat.JOUEUR_2;
+		else 
+			this.joueurCourant=Etat.JOUEUR_1;
 		int i = NOMBRE_DE_LIGNES - 1;
 		do {
 			if (cases[i][colonnePion] == Etat.VIDE) {
 				cases[i][colonnePion] = joueurCourant;
 				int numLigne = i;
 				
-				if (this.joueurCourant==Etat.JOUEUR_1)
-					this.joueurCourant=Etat.JOUEUR_2;
-				else 
-					this.joueurCourant=Etat.JOUEUR_1;
+				
 				
 				return numLigne;
 			}

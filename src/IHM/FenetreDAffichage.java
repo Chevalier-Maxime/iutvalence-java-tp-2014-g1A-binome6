@@ -87,164 +87,7 @@ public class FenetreDAffichage implements Runnable, InteractionIHM
 		fenetre.setVisible(true);
 	}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	/*	
-		
-		
-		 class boutonPlacement implements ActionListener
-			{
-		
-			 
-			 public void tourDeJeux(BoutonColonne[] b){
-				
-				 Color color = Color.red.brighter();
-				 
-				 for(int i=b.length-1;0<=i;i--){
-					if(partie1.joueurCourant == Etat.JOUEUR_1){
-					//	panneauJoueurGauche.remetPanel();
-						
-						if(b[i].estColore==false){
-							//panneauJoueurGauche.getBackground().darker();
-							position=b[i].positiony;
-							numLigne=partie1.grille.placerPion(b[i].positiony,partie1.joueurCourant);
-							b[i].setBackground(Color.YELLOW);
-							b[i].estColore=true;
-							if (partie1.grille.verifVictoire(numLigne, position, partie1.joueurCourant)==true){
-								int rejouer = JOptionPane.showConfirmDialog(fenetre, "Felicitation Joueur 1, vous avez gagn�! \nVoulez vous rejouer ?", "Félicitation !", JOptionPane.YES_NO_OPTION);
-								if (rejouer== JOptionPane.OK_OPTION)
-								{
-									fenetre.dispose();
-									ApplicationDAffichageDeFenetre.main(null);
-									
-								}
-									
-								else
-								{
-									fenetre.dispose();	
-								}
-							}
-							partie1.joueurCourant = Etat.JOUEUR_2;
-							panneauJoueurGauche.transformPanel();
-							panneauJoueurDroit.remetPanel();
-							break;
-						}	
-				
-					}
-					else  
-						if(partie1.joueurCourant == Etat.JOUEUR_2){
-						//	panneauJoueurGauche.remetPanel();
-						if(b[i].estColore==false){
-							position=b[i].positiony;
-							numLigne=partie1.grille.placerPion(b[i].positiony,partie1.joueurCourant);
-							b[i].setBackground(Color.RED);
-							b[i].estColore=true;
-							if (partie1.grille.verifVictoire(numLigne, position, partie1.joueurCourant)==true){
-								int rejouer = JOptionPane.showConfirmDialog(fenetre, "Felicitation Joueur 2, vous avez gagn�! \nVoulez vous rejouer ?", "Félicitation !", JOptionPane.YES_NO_OPTION);
-								if (rejouer== JOptionPane.OK_OPTION)
-								{
-									fenetre.dispose();
-									ApplicationDAffichageDeFenetre.main(null);
-									
-								}
-									
-								else
-								{
-									fenetre.dispose();	
-								}
-							}
-							partie1.joueurCourant = Etat.JOUEUR_1;
-							panneauJoueurDroit.transformPanel();
-							panneauJoueurGauche.remetPanel();
-						break;
-						
-						}
-						}			
-					}
-			 }
 
-				public void actionPerformed(ActionEvent e)
-				{
-					
-					Object source = e.getSource();
-					
-					if (source == bColl1)
-					{  
-						tourDeJeux(boutonColonne1);
-						if (partie1.grille.verifVictoire(numLigne, position, partie1.joueurCourant)==true){
-							JOptionPane.showMessageDialog(fenetre, "Felicitation vous avez gagn�!");
-							fenetre.dispose();	
-						}
-						
-						
-					} else	
-						
-//**********************************************Bouton 2**************************************************					
-						if (source == bColl2)
-						{
-							
-							tourDeJeux(boutonColonne2);							
-							}	
-					
-//**********************************************Bouton 3**************************************************	
-						else if (source == bColl3)
-						{  
-							tourDeJeux(boutonColonne3);	
-						} 
-					
-//**********************************************Bouton 4**************************************************	
-						else if (source == bColl4)
-						{  
-							tourDeJeux(boutonColonne4);	
-						}
-					
-//**********************************************Bouton 5**************************************************	
-						else if (source == bColl5)
-						{  
-							tourDeJeux(boutonColonne5);
-						}
-					
-//**********************************************Bouton 6**************************************************	
-						else if (source == bColl6)
-						{  
-							tourDeJeux(boutonColonne6);
-						}
-					
-//**********************************************Bouton 7**************************************************	
-						else if (source == bColl7)
-						{  
-							tourDeJeux(boutonColonne7);
-						}					
-				}
-			
-			}
-		 
-			
-
-		bColl1.addActionListener(new boutonPlacement());
-		bColl2.addActionListener(new boutonPlacement());
-		bColl3.addActionListener(new boutonPlacement());
-		bColl4.addActionListener(new boutonPlacement());
-		bColl5.addActionListener(new boutonPlacement());
-		bColl6.addActionListener(new boutonPlacement());
-		bColl7.addActionListener(new boutonPlacement());
-		
-		
-		
-		
-		
-		
-	}
-
-*/
 	@Override
 	public void alerteMauvaisPlacement() {
 		// TODO Auto-generated method stub
@@ -256,14 +99,14 @@ public class FenetreDAffichage implements Runnable, InteractionIHM
 	public void placerPion(int ligne, int colonne, Etat joueurCourant) {
 		this.grilleIHM[ligne][colonne].setBackground(joueurCourant.getColor());
 		
+		
 	}
 
 
 	@Override
 	public void victoire(Etat joueurCourant) {
-		// TODO Auto-generated method stub
-/*		if (grille.verifVictoire(lignePion, colonnePion)){
-			int rejouer = JOptionPane.showConfirmDialog(fenetre, "Felicitation Joueur 2, vous avez gagn�! \nVoulez vous rejouer ?", "Félicitation !", JOptionPane.YES_NO_OPTION);
+		// TODO Auto-generated method stu
+			int rejouer = JOptionPane.showConfirmDialog(fenetre, "Felicitation "+joueurCourant.toString()+", vous avez gagn�! \nVoulez vous rejouer ?", "Félicitation !", JOptionPane.YES_NO_OPTION);
 			if (rejouer== JOptionPane.OK_OPTION)
 			{
 				fenetre.dispose();
@@ -276,14 +119,23 @@ public class FenetreDAffichage implements Runnable, InteractionIHM
 				fenetre.dispose();	
 			}
 		
-	}*/
 	}
+	
 
 
 	@Override
-	public void changerJoueur() {
+	public void changerJoueur(Etat joueurCourant) {
+		if(joueurCourant==Etat.JOUEUR_2){
+			panneauJoueurDroit.transformPanel();
+			panneauJoueurGauche.remetPanel();
+			}else{
+				panneauJoueurGauche.transformPanel();
+				panneauJoueurDroit.remetPanel();
+			}
+			
+		}
 		// mettre le changement de couleur du panel et essayer de se passer du joueur courant en parametre
 		
 	}
 
-}
+

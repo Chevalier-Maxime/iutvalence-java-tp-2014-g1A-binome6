@@ -9,6 +9,6 @@ public interface InteractionIHM {
 
 	public void victoire(Etat joueurCourant);
 
-	public void changerJoueur();
+	public void changerJoueur(Etat joueurCourant);
 	
 }

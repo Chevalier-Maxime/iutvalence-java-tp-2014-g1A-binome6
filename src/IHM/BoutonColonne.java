@@ -18,6 +18,7 @@ public class BoutonColonne extends JButton implements ActionListener {
 		this.grille = grille;
 		this.ihm = ihm;
 		this.addActionListener(this);
+		this.setLabel("v");
 	}
 	
 	@Override
@@ -31,7 +32,9 @@ public class BoutonColonne extends JButton implements ActionListener {
 			if (grille.verifVictoire(ligne, colonne)) {
 				ihm.victoire(grille.getJoueurCourant());
 			} else {
-			ihm.changerJoueur();
+			
+			ihm.changerJoueur(grille.getJoueurCourant());
+			
 			}
 		}
 	}
