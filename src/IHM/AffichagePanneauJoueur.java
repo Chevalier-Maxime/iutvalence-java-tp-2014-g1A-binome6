@@ -32,12 +32,12 @@ public class AffichagePanneauJoueur extends JPanel
 		this.setLayout(new BorderLayout());
 	
 		 	p1.setPreferredSize(new Dimension(200,200));
-		 	p1.setBackground(Color.PINK);
+		 	p1.setBackground(Color.GREEN);
 		 
 		 	p3.setPreferredSize(new Dimension(200,200));
-		 	p3.setBackground(Color.BLUE);
+		 	p3.setBackground(Color.magenta);
 		 	p2.setPreferredSize(new Dimension(200,200));
-		 	p2.setBackground(Color.BLACK);
+		 	p2.setBackground(Color.blue);
 		 	
 			JLabel labelNomJoueur = new JLabel(nomjoueur);
 			JLabel labelPion = new JLabel();
@@ -71,16 +71,16 @@ public class AffichagePanneauJoueur extends JPanel
 	
 	
 	public void transformPanel(){
-		p1.setBackground(Color.pink.darker());
-		p2.setBackground(Color.black.darker());
-		p3.setBackground(Color.blue.darker());
+		p1.setBackground(Color.GREEN.darker());
+		p2.setBackground(Color.blue.darker());
+		p3.setBackground(Color.magenta.darker());
 		
 	}
 
 	public void remetPanel(){
-		p1.setBackground(Color.pink);
-		p2.setBackground(Color.black);
-		p3.setBackground(Color.blue);
+		p1.setBackground(Color.GREEN);
+		p2.setBackground(Color.blue);
+		p3.setBackground(Color.magenta);
 		
 	}
 	
