@@ -137,7 +137,7 @@ public class FenetreDAffichage implements Runnable
 	
 
 	
-	 //*************************Diposition des différents panel principaux*************************
+	 //*************************Diposition des diffï¿½rents panel principaux*************************
 	 	fenetre.getContentPane().add(panneauMilieu, BorderLayout.CENTER);
 	    //Ã€ l'ouest
 	    fenetre.getContentPane().add(panneauJoueurGauche, BorderLayout.WEST);
@@ -172,8 +172,18 @@ public class FenetreDAffichage implements Runnable
 							b[i].setBackground(Color.YELLOW);
 							b[i].estColore=true;
 							if (partie1.grille.verifVictoire(numLigne, position, partie1.joueurCourant)==true){
-								JOptionPane.showMessageDialog(fenetre, "Felicitation Joueur 1, vous avez gagné!");
-								fenetre.dispose();	
+								int rejouer = JOptionPane.showConfirmDialog(fenetre, "Felicitation Joueur 1, vous avez gagnï¿½! \nVoulez vous rejouer ?", "FÃ©licitation !", JOptionPane.YES_NO_OPTION);
+								if (rejouer== JOptionPane.OK_OPTION)
+								{
+									fenetre.dispose();
+									ApplicationDAffichageDeFenetre.main(null);
+									
+								}
+									
+								else
+								{
+									fenetre.dispose();	
+								}
 							}
 							partie1.joueurCourant = Etat.JOUEUR_2;
 							break;
@@ -188,8 +198,18 @@ public class FenetreDAffichage implements Runnable
 							b[i].setBackground(Color.RED);
 							b[i].estColore=true;
 							if (partie1.grille.verifVictoire(numLigne, position, partie1.joueurCourant)==true){
-								JOptionPane.showMessageDialog(fenetre, "Felicitation Joueur 2, vous avez gagné!");
-								fenetre.dispose();	
+								int rejouer = JOptionPane.showConfirmDialog(fenetre, "Felicitation Joueur 2, vous avez gagnï¿½! \nVoulez vous rejouer ?", "FÃ©licitation !", JOptionPane.YES_NO_OPTION);
+								if (rejouer== JOptionPane.OK_OPTION)
+								{
+									fenetre.dispose();
+									ApplicationDAffichageDeFenetre.main(null);
+									
+								}
+									
+								else
+								{
+									fenetre.dispose();	
+								}
 							}
 							partie1.joueurCourant = Etat.JOUEUR_1;					
 						break;
@@ -208,7 +228,7 @@ public class FenetreDAffichage implements Runnable
 					{  
 						tourDeJeux(boutonColonne1);
 						if (partie1.grille.verifVictoire(numLigne, position, partie1.joueurCourant)==true){
-							JOptionPane.showMessageDialog(fenetre, "Felicitation vous avez gagné!");
+							JOptionPane.showMessageDialog(fenetre, "Felicitation vous avez gagnï¿½!");
 							fenetre.dispose();	
 						}
 						
