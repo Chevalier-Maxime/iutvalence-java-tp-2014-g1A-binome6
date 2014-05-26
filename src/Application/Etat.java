@@ -1,4 +1,7 @@
 package Application;
+
+import java.awt.Color;
+
 /* TODO Package. */
 
 /**
@@ -8,16 +11,24 @@ package Application;
  * @version TODO
  */
 public enum Etat {
-	VIDE("."), JOUEUR_1("O"), JOUEUR_2("X");
+	VIDE(".",Color.WHITE), JOUEUR_1("O",Color.YELLOW), JOUEUR_2("X",Color.RED);
 
 	private final String representation;
+	private final Color couleur;
 
-	Etat(String repr) {
+	Etat(String repr,Color color) {
 		representation = repr;
+		couleur=color;
+		
+	}
+	public Color getColor(){
+		return this.couleur;
 	}
 
+	
 	@Override
 	public String toString() {
 		return this.representation;
 	}
+	
 }

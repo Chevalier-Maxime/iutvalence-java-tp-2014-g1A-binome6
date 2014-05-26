@@ -9,17 +9,22 @@ package Application;
  */
 public class Grille {
 	/** Le nombre de cases par ligne. */
-	private static final int NOMBRE_DE_LIGNES = 6;
+	public static final int NOMBRE_DE_LIGNES = 6;
 	/** Le nombre de cases par colonne. */
-	private static final int NOMBRE_DE_COLONNES = 7;
+	public static final int NOMBRE_DE_COLONNES = 7;
+	
+	private static final Etat joueurParDefaut = Etat.JOUEUR_1;
 
 	/* TODO Change en cours de partie ? */
 	/** Les cases de la grille. */
 	private Etat[][] cases;
+	
+	private Etat joueurCourant;
 
 	/** Construire une nouvelle grille vide. */
 	public Grille() {
 		this.cases = new Etat[Grille.NOMBRE_DE_LIGNES][Grille.NOMBRE_DE_COLONNES];
+		this.joueurCourant=joueurParDefaut;
 
 		for (int numeroDeLigne = 0; numeroDeLigne < Grille.NOMBRE_DE_LIGNES; numeroDeLigne++) {
 			for (int numeroDeColonne = 0; numeroDeColonne < Grille.NOMBRE_DE_COLONNES; numeroDeColonne++) {
@@ -27,21 +32,29 @@ public class Grille {
 			}
 		}
 	}
-
+/*
+	public int placerPion(int colonne) {
+		return placerPion(colonne,Etat.JOUEUR_1);
+	}
+*/
+	
 	/** TODO. */
-	public int placerPion(int colonnePion, Etat joueurCourant) {
+	public int placerPion(int colonnePion) {
 		if (colonnePion > Grille.NOMBRE_DE_LIGNES || colonnePion < 0) {
-			System.err.println("Erreur de saisie");
-			/* XXX INDIQUER LE PROBLEME */
 			return colonnePion;
 		}
 
 		int i = NOMBRE_DE_LIGNES - 1;
-		/* TODO � impl�menter au plus vite !!!! */
 		do {
 			if (cases[i][colonnePion] == Etat.VIDE) {
 				cases[i][colonnePion] = joueurCourant;
 				int numLigne = i;
+				
+				if (this.joueurCourant==Etat.JOUEUR_1)
+					this.joueurCourant=Etat.JOUEUR_2;
+				else 
+					this.joueurCourant=Etat.JOUEUR_1;
+				
 				return numLigne;
 			}
 			i--;
@@ -70,8 +83,7 @@ public class Grille {
 	}
 
 	/** m�thode de v�rification du puissance 4 */
-	public boolean verifVictoire(int lignePion, int colonnePion,
-			Etat joueurCourant) {
+	public boolean verifVictoire(int lignePion, int colonnePion) {
 
 		/** v�rifie si il n'y a pas un puissance 4 sur une ligne */
 		int compteur = 0;
@@ -265,4 +277,10 @@ public class Grille {
 		
 		return false;
 	}
+
+	
+	
+public Etat getJoueurCourant() {
+	return joueurCourant;
+}
 }

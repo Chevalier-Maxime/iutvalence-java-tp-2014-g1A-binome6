@@ -11,13 +11,13 @@ import java.util.Scanner;
 public class Puissance4 {
 	/** TODO. */
 
-	public Etat joueurCourant;
+	
 	/* TODO Change en cours de partie ? */
 	/** TODO. */
 	public Grille grille;
 
-	public Puissance4(Etat t) {
-		this.joueurCourant = t;
+	public Puissance4() {
+		//this.joueurCourant = t;
 		this.grille = new Grille();
 	}
 
@@ -28,15 +28,12 @@ public class Puissance4 {
 			System.out.println("Veuillez saisir le num�ro de colonne");
 			Scanner sc = new Scanner(System.in);
 			int numScan = sc.nextInt();
-			int numLigne = grille.placerPion(numScan, joueurCourant);
+			int numLigne = grille.placerPion(numScan);
 			System.out.println(grille);
-			boolean victoire = grille.verifVictoire(numLigne, numScan, joueurCourant);
+			boolean victoire = grille.verifVictoire(numLigne, numScan);
 			System.out.println(victoire);
-			if (joueurCourant == Etat.JOUEUR_1) {
-				joueurCourant = Etat.JOUEUR_2;
-			} else {
-				joueurCourant = Etat.JOUEUR_1;
-			}
+			
+			
 			i = i - 1;
 			if (victoire==true){
 				break;

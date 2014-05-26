@@ -20,85 +20,26 @@ import Application.Etat;
 import Application.Grille;
 import Application.Puissance4;
 
-public class FenetreDAffichage implements Runnable
+
+
+public class FenetreDAffichage implements Runnable, InteractionIHM
 {
 	
-	public JButton bColl1 = new JButton("v");
-	public JButton bColl2 = new JButton("v");
-	public JButton bColl3 = new JButton("v");
-	public JButton bColl4 = new JButton("v");
-	public JButton bColl5 = new JButton("v");
-	public JButton bColl6 = new JButton("v");
-	public JButton bColl7 = new JButton("v");
-	public JFrame fenetre = new JFrame();
-	
-	public boutonGrille bg00 = new boutonGrille(false,0,0);
-	public boutonGrille bg01 = new boutonGrille(false,0,1);
-	public boutonGrille bg02 = new boutonGrille(false,0,2);
-	public boutonGrille bg03 = new boutonGrille(false,0,3);
-	public boutonGrille bg04 = new boutonGrille(false,0,4);
-	public boutonGrille bg05 = new boutonGrille(false,0,5);
-	public boutonGrille bg06 = new boutonGrille(false,0,6);
-	public boutonGrille bg10 = new boutonGrille(false,1,0);
-	public boutonGrille bg11 = new boutonGrille(false,1,1);
-	public boutonGrille bg12= new boutonGrille(false,1,2);
-	public boutonGrille bg13 = new boutonGrille(false,1,3);
-	public boutonGrille bg14 = new boutonGrille(false,1,4);
-	public boutonGrille bg15 = new boutonGrille(false,1,5);
-	public boutonGrille bg16 = new boutonGrille(false,1,6);
-	public boutonGrille bg20 = new boutonGrille(false,2,0);
-	public boutonGrille bg21 = new boutonGrille(false,2,1);
-	public boutonGrille bg22 = new boutonGrille(false,2,2);
-	public boutonGrille bg23 = new boutonGrille(false,2,3);
-	public boutonGrille bg24 = new boutonGrille(false,2,4);
-	public boutonGrille bg25 = new boutonGrille(false,2,5);
-	public boutonGrille bg26 = new boutonGrille(false,2,6);
-	public boutonGrille bg30 = new boutonGrille(false,3,0);
-	public boutonGrille bg31 = new boutonGrille(false,3,1);
-	public boutonGrille bg32 = new boutonGrille(false,3,2);
-	public boutonGrille bg33 = new boutonGrille(false,3,3);
-	public boutonGrille bg34 = new boutonGrille(false,3,4);
-	public boutonGrille bg35 = new boutonGrille(false,3,5);
-	public boutonGrille bg36 = new boutonGrille(false,3,6);
-	public boutonGrille bg40 = new boutonGrille(false,4,0);
-	public boutonGrille bg41 = new boutonGrille(false,4,1);
-	public boutonGrille bg42 = new boutonGrille(false,4,2);
-	public boutonGrille bg43= new boutonGrille(false,4,3);
-	public boutonGrille bg44 = new boutonGrille(false,4,4);
-	public boutonGrille bg45 = new boutonGrille(false,4,5);
-	public boutonGrille bg46 = new boutonGrille(false,4,6);
-	public boutonGrille bg50 = new boutonGrille(false,5,0);
-	public boutonGrille bg51 = new boutonGrille(false,5,1);
-	public boutonGrille bg52= new boutonGrille(false,5,2);
-	public boutonGrille bg53 = new boutonGrille(false,5,3);
-	public boutonGrille bg54 = new boutonGrille(false,5,4);
-	public boutonGrille bg55 = new boutonGrille(false,5,5);
-	public boutonGrille bg56 = new boutonGrille(false,5,6);
+	private JButton[][] grilleIHM = new JButton[6][7];
 	
 	 public AffichagePanneauJoueur panneauJoueurGauche =new AffichagePanneauJoueur("joueur1","jaune");
 	 public  AffichagePanneauJoueur panneauJoueurDroit =new AffichagePanneauJoueur("joueur2","rouge");
-		
-	public Puissance4 partie1 = new Puissance4(Etat.JOUEUR_1);
-	public int numLigne;
-	public boolean victoire;
-	public int position;
-	
-	
+	 JFrame fenetre = new JFrame();
+	 Grille grille = new Grille();
+			
 	public void run()
 	{
 		//*************************** caracteristique de la fenetre**************************
+		
 		fenetre.setResizable(false);
 		fenetre.setTitle("Puissance 4");
 		fenetre.setSize(1050, 600);
-		//On définit le layout à utiliser sur le content pane
-	    fenetre.getContentPane().setLayout(new BorderLayout());
-	    
-	    //Au nord
-	    //*TODO afficher boite de dialogue pour recuperer le nom*/
-	   
-	 	
-	    
-	    
+		fenetre.getContentPane().setLayout(new BorderLayout());
 	    
 	    JSplitPane panneauMilieu = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 	    JPanel partieHauteMilieu =new JPanel();
@@ -114,27 +55,22 @@ public class FenetreDAffichage implements Runnable
 	 	panneauMilieu.setBorder(null);
 	 	panneauMilieu.setDividerSize(0);
 	 	partieHauteMilieu.setLayout(new GridLayout(1,7));
-	 	partieHauteMilieu.add(bColl1);
-	 	partieHauteMilieu.add(bColl2);
-	 	partieHauteMilieu.add(bColl3);
-	 	partieHauteMilieu.add(bColl4);
-	 	partieHauteMilieu.add(bColl5);
-	 	partieHauteMilieu.add(bColl6);
-	 	partieHauteMilieu.add(bColl7);
-	 	
+	// 	Grille grille = new Grille();
+	 	for (int i = 0; i < 7; i++) {
+	 		partieHauteMilieu.add(new BoutonColonne(i, grille, this));
+	 	}
 
 	 	partieBasseMilieu.setLayout(new GridLayout(6,7));
-	 	
 	 	panneauJoueurDroit.transformPanel();
 
 	 	
 	//***************************** Ajout des boutons au gridlayout et  rendre inactif*****************
-	 	
-	 	boutonGrille ensembleBouton[]={bg00,bg01,bg02,bg03,bg04,bg05,bg06,bg10,bg11,bg12,bg13,bg14,bg15,bg16,bg20,bg21,bg22,bg23,bg24,bg25,bg26,bg30,bg31,bg32,bg33,bg34,bg35,bg36,bg40,bg41,bg42,bg43,bg44,bg45,bg46,bg50,bg51,bg52,bg53,bg54,bg55,bg56};
-	 		
-	 	for(int i=0;i<ensembleBouton.length;i++){
-	 		partieBasseMilieu.add(ensembleBouton[i]);
-	 		ensembleBouton[i].setEnabled(false);
+	 		 		
+	 	for(int i=0;i<Grille.NOMBRE_DE_LIGNES;i++){
+	 		for(int j=0;j<Grille.NOMBRE_DE_COLONNES;j++){	 			
+	 			partieBasseMilieu.add(grilleIHM[i][j] = new JButton());
+	 			grilleIHM[i][j].setEnabled(false);
+	 		}
 	 	}
 	
 
@@ -149,20 +85,26 @@ public class FenetreDAffichage implements Runnable
 		fenetre.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		//fenetre.pack();
 		fenetre.setVisible(true);
-
+	}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	/*	
+		
 		
 		 class boutonPlacement implements ActionListener
 			{
-			public boutonGrille boutonColonne1[] ={bg00,bg10,bg20,bg30,bg40,bg50};
-			public boutonGrille boutonColonne2[] ={bg01,bg11,bg21,bg31,bg41,bg51};
-			public boutonGrille boutonColonne3[] ={bg02,bg12,bg22,bg32,bg42,bg52};
-			public boutonGrille boutonColonne4[] ={bg03,bg13,bg23,bg33,bg43,bg53};
-			public boutonGrille boutonColonne5[] ={bg04,bg14,bg24,bg34,bg44,bg54};
-			public boutonGrille boutonColonne6[] ={bg05,bg15,bg25,bg35,bg45,bg55};
-			public boutonGrille boutonColonne7[] ={bg06,bg16,bg26,bg36,bg46,bg56};
-			
+		
 			 
-			 public void tourDeJeux(boutonGrille[] b){
+			 public void tourDeJeux(BoutonColonne[] b){
 				
 				 Color color = Color.red.brighter();
 				 
@@ -285,7 +227,7 @@ public class FenetreDAffichage implements Runnable
 			
 			}
 		 
-//**********************************************Listener des boutons**************************************************				
+			
 
 		bColl1.addActionListener(new boutonPlacement());
 		bColl2.addActionListener(new boutonPlacement());
@@ -299,6 +241,48 @@ public class FenetreDAffichage implements Runnable
 		
 		
 		
+		
+	}
+
+*/
+	@Override
+	public void alerteMauvaisPlacement() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void placerPion(int ligne, int colonne, Etat joueurCourant) {
+		this.grilleIHM[ligne][colonne].setBackground(joueurCourant.getColor());
+		
+	}
+
+
+	@Override
+	public void victoire(Etat joueurCourant) {
+		// TODO Auto-generated method stub
+/*		if (grille.verifVictoire(lignePion, colonnePion)){
+			int rejouer = JOptionPane.showConfirmDialog(fenetre, "Felicitation Joueur 2, vous avez gagn�! \nVoulez vous rejouer ?", "Félicitation !", JOptionPane.YES_NO_OPTION);
+			if (rejouer== JOptionPane.OK_OPTION)
+			{
+				fenetre.dispose();
+				ApplicationDAffichageDeFenetre.main(null);
+				
+			}
+				
+			else
+			{
+				fenetre.dispose();	
+			}
+		
+	}*/
+	}
+
+
+	@Override
+	public void changerJoueur() {
+		// mettre le changement de couleur du panel et essayer de se passer du joueur courant en parametre
 		
 	}
 
